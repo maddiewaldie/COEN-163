@@ -1,0 +1,102 @@
+main {
+    font-family: var(--accent-text);
+    max-width: 100ch;
+    padding: 20px;
+    margin: auto;
+}
+
+a { 
+    text-decoration: none; 
+} 
+
+h1 {
+    line-height: 2rem;
+}
+
+body {
+    --accent-background: #8c6c9d;
+    --accent-background-text: #333;
+    --accent-text: "Helvetica", "Arial", sans-serif;;
+    --gray: #eee;
+    --dark-gray: #ccc;
+    --darkest-gray: #aaa;
+    --black: #333;
+
+    color: var(--black);
+    line-height: 1.5rem;
+    margin: auto;
+    padding: auto;
+}
+
+@media only screen and (min-width: 600px) {
+    nav {
+        display: flex;
+        justify-content: flex-end;
+        background-color: var(--accent-background);
+        font-family: var(--accent-text);
+    }
+    
+    nav ul {
+        list-style: none;
+        display: flex;
+    }
+    
+    nav ul li {
+        margin-right: 1rem;
+    }
+    
+    nav ul li a {
+        color: var(--gray);
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    img.smallImage {
+        width: 50%;
+        height: 50%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    nav {
+        display: flex;
+        background-color: var(--accent-background);
+        font-family: var(--accent-text);
+        align-items: center;
+        justify-content: center;
+    }
+    
+    nav ul {
+        list-style: none;
+        display: flex;
+        padding: 10px;
+        margin: 0;
+    }
+    
+    nav ul li {
+        margin-right: 1rem;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    nav ul li a.words {
+        color: var(--gray);
+        font-weight: bold;
+        letter-spacing: 1px;
+        display: none;
+    }
+
+    nav ul li i {
+        color: white;
+        display: inline;
+        padding: 10px;
+        padding-inline-start: 30px;
+        font-size:50px !important;
+    }
+
+    img.smallImage {
+        width: 100%;
+        height: 25%;
+    }
+}
