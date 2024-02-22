@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-16" />
+    <link href="./styling.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Information</title>
+  </head>
+  <body>
+    <nav>
+        <ul>
+            <li>
+                <a class="words" info href="welcome.html">Welcome </a>
+                <a href="welcome.html"><i class="fa fa-heart"></i></a>
+            </li>
+            <li>
+                <a class="words" info href="informationPage.html">Information </a>
+                <a href="informationPage.html"><i class="fa fa-info"></i></a>
+            </li>
+            <li>
+                <a class="words" href="descriptionPage.html">My Idea</a>
+                <a href="descriptionPage.html"><i class="fa fa-home"></i></a>
+            </li>
+            <li>
+                <a class="words" href="helpPage1.html">Tutorials</a>
+                <a href="helpPage1.html"><i class="fa fa-book"></i></a>
+            </li>
+            <li>
+                <a class="words" href="helpPage2.html">FAQs</a>
+                <a href="helpPage1.html"><i class="fa fa-question"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Waste Management Application</h1>
+        <h2>Frequently Asked Questions (FAQs)</h2>
+        This page addresses some of the frequently asked questions users may have about the application.
+
+        <h3 class="accordion">How does the app categorize my waste?</h3>
+        <div class="panel">
+        <ul>
+            <li>The app utilizes a highly trained machine learning model to categorize your trash into two categories – landfill waste and recyclables. This model runs on the feed of your device's camera, analyzing the trash within its view.</li>
+        </ul>
+        </div>
+
+        <h3 class="accordion">Is there a way to report if the application gives me incorrect information?</h3>
+        <div class="panel">
+        <ul>
+            <li>Yes! If the application provides improper waste sorting guidance (e.g. tells you to throw out something you know can be recycled), you can press the report button (that looks like this ⚠️). The AI model will learn from your help! Additionally, if a trash can or recycling bin appears on the map, but it isn't there in real life, you can use the form below to contact us, and we'll investigate!</li>
+        </ul>
+        </div>
+
+        <h3 class="accordion">How does the app know where trash and recycling bins are?</h3>
+        <div class="panel">
+        <ul>
+            <li>The app uses a combination of our own TrashMap database, as well as crowdsourcing information to determine where trash and recycling bins are located.</li>
+        </ul>
+        </div>
+
+        <h3 class="accordion">Because the app uses my location and my camera, is all of my information secure?</h3>
+        <div class="panel">
+        <ul>
+            <li>Yes! All of your informoation is secure! The camera feed is encrypted and run through the machine learning model on device, and your location is only used for the map. We don't collect or store any of your personal information.</li>
+        </ul>
+        </div>
+
+        <h2>Contact Us!</h2>
+        If you have any additional questions that haven't been answered, or if you simply want to provide feedback, please use the form below to get in touch! :)
+        
+        <div class="container">
+            <form action="action_page.php">
+          
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="firstname" placeholder="Please enter your first name!">
+          
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lastname" placeholder="Please enter your last name!">
+
+              <label for="email">Email</label>
+              <input type="text" id="email" name="email" placeholder="Please enter your email address so we can get back to you!">
+          
+              <label for="country">Country</label>
+              <select id="country" name="country">
+                <option value="australia">Australia</option>
+                <option value="canada">Canada</option>
+                <option value="usa">United Kingdom</option>
+                <option value="usa">United States</option>
+              </select>
+          
+              <label for="subject">Feedback</label>
+              <textarea id="subject" name="subject" placeholder="Let us know your feedback!" style="height:100px"></textarea>
+          
+              <input type="submit" value="Submit">
+            </form>
+        </div>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const form = document.querySelector("form");
+  
+          form.addEventListener("submit", function(event) {
+            // Array to store validation errors
+            const errors = [];
+
+            const inputFields = form.querySelectorAll("input, textarea");
+            inputFields.forEach(field => {
+                field.classList.remove("error");
+            });
+  
+            // Validate First Name
+            const fname = document.getElementById("fname").value.trim();
+            if (fname === "") {
+              errors.push("⚠️Please enter your first name!");
+              document.getElementById("fname").classList.add("error");
+            }
+  
+            // Validate Last Name
+            const lname = document.getElementById("lname").value.trim();
+            if (lname === "") {
+              errors.push("⚠️Please enter your last name!");
+              document.getElementById("lname").classList.add("error");
+            }
+  
+            // Validate Email
+            const email = document.getElementById("email").value.trim();
+            if (email === "") {
+              errors.push("⚠️Please enter your email address!");
+              document.getElementById("email").classList.add("error");
+            }
+  
+            // Validate Country
+            const country = document.getElementById("country").value;
+            if (country === "") {
+              errors.push("⚠️Please select your country!");
+              document.getElementById("country").classList.add("error");
+            }
+  
+            // Validate Feedback
+            const subject = document.getElementById("subject").value.trim();
+            if (subject === "") {
+              errors.push("⚠️Please provide your feedback!");
+              document.getElementById("subject").classList.add("error");
+            }
+  
+            // Display errors or submit the form
+            if (errors.length > 0) {
+              // Prevent form submission
+              event.preventDefault();
+  
+              // Display errors to the user (you can customize this part based on your needs)
+              alert("Please correct the following errors:\n\n" + errors.join("\n"));
+            }
+            else {
+                alert("Thank you for providing us with your feedback! We'll get in touch soon! :)");
+                inputFields.forEach(field => {
+                    if (field.type !== "submit") {
+                        field.value = "";
+                    }
+                });
+            }
+          });
+        });
+
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+            panel.style.display = "none";
+            } else {
+            panel.style.display = "block";
+            }
+        });
+        }
+      </script>
+  </body>
+</html>
